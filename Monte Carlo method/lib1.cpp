@@ -9,6 +9,7 @@ using namespace std;
 void generate_data1() {
 
     ofstream file("data1.txt");
+    ofstream file_avg("avg1.txt");
     file << "number of points;" << "result" << endl;
     double avg[101];
 
@@ -22,13 +23,14 @@ void generate_data1() {
         avg[n/50] = sum/static_cast<double>(50);
     }
 
-    file << endl << "number of points;" << "average" << endl;
+    file.close();
+    file_avg << "number of points;" << "average" << endl;
 
     for (int i = 1; i <= 100; i++) {
-        file << i * 50 << ';' << avg[i] << endl;
+        file_avg << i * 50 << ';' << avg[i] << endl;
     }
 
-    file.close();
+    file_avg.close();
 }
 
 double integral1(const int n) {
